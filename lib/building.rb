@@ -6,6 +6,12 @@ class Building
     @rented_units = []
   end
 
+  def annual_breakdown
+    breakdown = Hash.new { |hash, name| hash[name] = 0 }
+    breakdown[rented_units.first.renter.name]= rented_units.first.monthly_rent * 12
+    breakdown
+  end
+
   def units_by_number_of_bedrooms
     units_hash = Hash.new { |hash, rooms| hash[rooms] = [] }
     units.each do |unit|

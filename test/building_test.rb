@@ -99,4 +99,25 @@ class BuildingTest < Minitest::Test
     assert_equal expected, @building.units_by_number_of_bedrooms
   end
 
+  def test_it_can_find_rent_annual_breakdown
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    @building.add_unit(@unit3)
+    @unit2.add_renter(@renter1)
+    expected = {"Spencer" => 11988}
+
+    assert_equal expected, @building.annual_breakdown
+  end
+
+  def test_it_can_find_rent_annual_breakdown_for_2
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    @building.add_unit(@unit3)
+    @unit2.add_renter(@renter1)
+    @unit1.add_renter(@renter2)
+    expected = {"Jessie" => 14400, "Spencer" => 11988}
+
+    assert_equal expected, @building.annual_breakdown
+  end
+
 end
