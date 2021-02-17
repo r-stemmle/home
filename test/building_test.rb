@@ -110,6 +110,7 @@ class BuildingTest < Minitest::Test
   end
 
   def test_it_can_find_rent_annual_breakdown_for_2
+    skip #2nd to last item on iteration 4
     @building.add_unit(@unit1)
     @building.add_unit(@unit2)
     @building.add_unit(@unit3)
